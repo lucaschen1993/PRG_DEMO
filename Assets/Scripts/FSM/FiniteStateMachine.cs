@@ -8,16 +8,17 @@ using UnityEngine;
 
 public class FiniteStateMachine : MonoBehaviour
 {
-    public Player Player;
-    public BaseState curBaseState;
-    private Dictionary<Player.PlayerState, BaseState> stateDictionary;
-    public FiniteStateMachine()
+    private AllCharacter _character;
+    private BaseState curBaseState;
+    private Dictionary<AllCharacter.StateType, BaseState> stateDictionary;
+    public FiniteStateMachine(AllCharacter character)
     {
-        stateDictionary  = new Dictionary<Player.PlayerState, BaseState>();
+        _character = character;
+        stateDictionary  = new Dictionary<AllCharacter.StateType, BaseState>();
         curBaseState = null;
     }
-    //注册状态
-    public bool RegisterPlayerState(BaseState state)
+    //注册角色状态
+    public bool RegisterState(BaseState state)
     {
         if (state == null || stateDictionary.ContainsKey(state.GetStateType()))
         {
@@ -26,20 +27,14 @@ public class FiniteStateMachine : MonoBehaviour
         stateDictionary.Add(state.GetStateType(), state);
         return true;
     }
-    //切换状态委托
-    public delegate void SwitchStateDelegate(BaseState targState);
-    private event SwitchStateDelegate changeState;
-    //切换状态回调
-    public void RegisterStateEvent(Player.PlayerState targeStateType)
+    
+
+
+    public void ChangeState(AllCharacter.StateType stateType)
     {
         BaseState targState = null;
-        stateDictionary.TryGetValue(targeStateType, out targState);
-        changeState += FiniteStateMachine_changeState;
-        changeState(targState);
-    }
+        stateDictionary.TryGetValue(stateType, out targState);
 
-    private void FiniteStateMachine_changeState(BaseState targState)
-    {
         if (curBaseState == null)
         {
             //状态为空
@@ -58,10 +53,9 @@ public class FiniteStateMachine : MonoBehaviour
             curBaseState.EnterState(this,preState);
         }
     }
-
     public void OnUpdate()
     {
-        if(curBaseState!=null)
-        curBaseState.UpdateState();
+        if (curBaseState!=null)
+            curBaseState.UpdateState();
     }
 }

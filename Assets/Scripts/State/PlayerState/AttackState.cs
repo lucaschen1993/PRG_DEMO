@@ -10,9 +10,9 @@ public class AttackState : BaseState
         //向状态机发送事件，请求转换状态
         this._player = player;
     }
-    public override Player.PlayerState GetStateType()
+    public override AllCharacter.StateType GetStateType()
     {
-        return Player.PlayerState.STATE_ATTACK;
+        return AllCharacter.StateType.STATE_ATTACK;
     }
     public override void EnterState(FiniteStateMachine fsMachine, BaseState preState)
     {
@@ -24,7 +24,7 @@ public class AttackState : BaseState
         {
             Debug.Log("Enter the AttackState");
         }
-        //Debug.Log(_player.FsMachine.curBaseState);
+        //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()

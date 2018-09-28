@@ -9,9 +9,9 @@ public class MoveState : BaseState
     {
         this._player = player;
     }
-    public override Player.PlayerState GetStateType()
+    public override AllCharacter.StateType GetStateType()
     {
-        return Player.PlayerState.STATE_MOVE;
+        return AllCharacter.StateType.STATE_MOVE;
     }
     public override void EnterState(FiniteStateMachine fsMachine, BaseState preState)
     {
@@ -23,7 +23,7 @@ public class MoveState : BaseState
         {
             Debug.Log("Enter the MoveState");
         }
-        //Debug.Log(_player.FsMachine.curBaseState);
+        //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()

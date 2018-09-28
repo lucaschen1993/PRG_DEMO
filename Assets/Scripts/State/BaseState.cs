@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class BaseState
 {
-    //获取角色的状态机状态
-    public FiniteStateMachine MyPlayerState;
-    public Player MyPlayer;
-
+    //获取角色
+    public AllCharacter Character;
+    
     //得到当前状态
-    public virtual Player.PlayerState GetStateType()
+    public virtual AllCharacter.StateType GetStateType()
     {
-        return MyPlayer.StateType;
+        return Character.CharaterState;
     }
     //进入状态
     public virtual void EnterState(FiniteStateMachine fsMachine, BaseState preState)

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -832,8 +834,14 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+    <Compile Include="Assets\Scripts\AIEnemy.cs" />
+    <Compile Include="Assets\Scripts\AllCharacter.cs" />
     <Compile Include="Assets\Scripts\FSM\FiniteStateMachine.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\State\AIState\AIAttackState.cs" />
+    <Compile Include="Assets\Scripts\State\AIState\AIChaseState.cs" />
+    <Compile Include="Assets\Scripts\State\AIState\AIDeadState.cs" />
+    <Compile Include="Assets\Scripts\State\AIState\AIPatrolState.cs" />
     <Compile Include="Assets\Scripts\State\BaseState.cs" />
     <Compile Include="Assets\Scripts\State\PlayerState\AttackState.cs" />
     <Compile Include="Assets\Scripts\State\PlayerState\DeadState.cs" />

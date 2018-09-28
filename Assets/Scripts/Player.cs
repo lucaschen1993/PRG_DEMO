@@ -2,48 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : AllCharacter
 {
+    public delegate void PlayerStateChange(AllCharacter.StateType stateType);
+    public event PlayerStateChange StateChange;
 
     [HideInInspector]
     public FiniteStateMachine FsMachine;
-    public enum PlayerState
-    {
-        STATE_STAND,
-        STATE_MOVE,
-        STATE_ATTACK,
-        STATE_DEAD
-    };
-    [HideInInspector]
-    public PlayerState StateType;
 
     // Use this for initialization
     void Awake ()
     {
-        FsMachine = new FiniteStateMachine();
+        FsMachine = new FiniteStateMachine(this);
         //注册角色的状态
-        FsMachine.RegisterPlayerState(new AttackState(this));
-        FsMachine.RegisterPlayerState(new StandState(this));
-        FsMachine.RegisterPlayerState(new DeadState(this));
-        FsMachine.RegisterPlayerState(new MoveState(this));
-
-        //设置角色的初始状态
-        FsMachine.RegisterStateEvent(PlayerState.STATE_STAND);
+        FsMachine.RegisterState(new AttackState(this));
+        FsMachine.RegisterState(new StandState(this));
+        FsMachine.RegisterState(new DeadState(this));
+        FsMachine.RegisterState(new MoveState(this));
+        //注册事件
+        StateChange+=new PlayerStateChange(FsMachine.ChangeState);
     }
-	
-	void Update () {
-	    FsMachine.OnUpdate();
+
+    void Start()
+    {
+        //设置角色的初始状态
+        EnterStand();
+    }
+
+    void Update () {
+        FsMachine.OnUpdate();
 	}
 
     public void StickMove()
     {
         Debug.Log("Moving the JoyStick");
-        FsMachine.RegisterStateEvent(PlayerState.STATE_MOVE);
+        StateChange(AllCharacter.StateType.STATE_MOVE);
     }
 
     public void DownAttack()
     {
         Debug.Log("Down the Attack");
-        FsMachine.RegisterStateEvent(PlayerState.STATE_ATTACK);
+        StateChange(AllCharacter.StateType.STATE_ATTACK);
+    }
+
+    public void EnterStand()
+    {
+        StateChange(AllCharacter.StateType.STATE_STAND);
     }
 }
