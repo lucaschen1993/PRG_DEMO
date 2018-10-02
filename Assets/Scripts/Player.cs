@@ -6,6 +6,7 @@ public class Player : AllCharacter
 {
     public delegate void PlayerStateChange(AllCharacter.StateType stateType);
     public event PlayerStateChange StateChange;
+    public int PlayerHp;
 
     [HideInInspector]
     public FiniteStateMachine FsMachine;
@@ -26,6 +27,7 @@ public class Player : AllCharacter
     void Start()
     {
         //设置角色的初始状态
+        PlayerHp = 100;
         EnterStand();
     }
 
@@ -48,5 +50,15 @@ public class Player : AllCharacter
     public void EnterStand()
     {
         StateChange(AllCharacter.StateType.STATE_STAND);
+    }
+
+    public bool IsPlayerDead()
+    {
+        if (PlayerHp <= 0)
+            return true;
+        else
+        {
+            return false;
+        }
     }
 }

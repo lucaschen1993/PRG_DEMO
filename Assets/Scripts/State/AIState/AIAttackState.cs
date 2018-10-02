@@ -9,13 +9,37 @@ public class AIAttackState : BaseState
     {
         this._enemy = enemy;
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override AllCharacter.StateType GetStateType()
+    {
+        return AllCharacter.StateType.STATE_ATTACK;
+    }
+    public override void EnterState(FiniteStateMachine fsMachine, BaseState preState)
+    {
+        if (preState != null)
+        {
+            Debug.Log("Enter the AttackState the preState is:" + preState.GetStateType());
+        }
+        else
+        {
+            Debug.Log("Enter the AttackState");
+        }
+        //Debug.Log(_player.CurBaseState);
+    }
+
+    public override void UpdateState()
+    {
+        Debug.Log("i'm in the attack state");
+        Debug.Log("hit the player");
+
+    }
+
+    public override void ExitState(BaseState preState)
+    {
+        Debug.Log("Exit Attack State. " + preState.GetStateType());
+    }
+
+    public override void InputHandle()
+    {
+
+    }
 }

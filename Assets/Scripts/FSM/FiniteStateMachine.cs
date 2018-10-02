@@ -9,13 +9,13 @@ using UnityEngine;
 public class FiniteStateMachine : MonoBehaviour
 {
     private AllCharacter _character;
-    private BaseState curBaseState;
+    public BaseState CurBaseState;
     private Dictionary<AllCharacter.StateType, BaseState> stateDictionary;
     public FiniteStateMachine(AllCharacter character)
     {
         _character = character;
         stateDictionary  = new Dictionary<AllCharacter.StateType, BaseState>();
-        curBaseState = null;
+        CurBaseState = null;
     }
     //注册角色状态
     public bool RegisterState(BaseState state)
@@ -35,27 +35,27 @@ public class FiniteStateMachine : MonoBehaviour
         BaseState targState = null;
         stateDictionary.TryGetValue(stateType, out targState);
 
-        if (curBaseState == null)
+        if (CurBaseState == null)
         {
             //状态为空
-            curBaseState = targState;
-            curBaseState.EnterState(this, null);
+            CurBaseState = targState;
+            CurBaseState.EnterState(this, null);
         }
-        else if (curBaseState != null && targState == curBaseState)
+        else if (CurBaseState != null && targState == CurBaseState)
         {
             //状态不为空且与目标状态相同
-        }else if (curBaseState != null && targState != curBaseState)
+        }else if (CurBaseState != null && targState != CurBaseState)
         {
             //切换状态
-            BaseState preState = curBaseState;
+            BaseState preState = CurBaseState;
             preState.ExitState(preState);
-            curBaseState = targState;
-            curBaseState.EnterState(this,preState);
+            CurBaseState = targState;
+            CurBaseState.EnterState(this,preState);
         }
     }
     public void OnUpdate()
     {
-        if (curBaseState!=null)
-            curBaseState.UpdateState();
+        if (CurBaseState!=null)
+            CurBaseState.UpdateState();
     }
 }

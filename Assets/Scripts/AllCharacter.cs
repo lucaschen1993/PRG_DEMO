@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AllCharacter : MonoBehaviour
 {
+    [HideInInspector]
     public BaseState CurBaseState;
 
     public enum StateType

@@ -9,13 +9,43 @@ public class AIChaseState : BaseState
     {
         this._enemy = enemy;
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override AllCharacter.StateType GetStateType()
+    {
+        return AllCharacter.StateType.STATE_CHASE;
+    }
+
+    public override void EnterState(FiniteStateMachine fsMachine, BaseState preState)
+    {
+        if (preState != null)
+        {
+            Debug.Log("Enter the ChaseState the preState is:" + preState.GetStateType());
+        }
+        else
+        {
+            Debug.Log("Enter the PatrolState");
+        }
+        //Debug.Log(_player.CurBaseState);
+    }
+
+    public override void UpdateState()
+    {
+        Debug.Log("i'm in the chase state");
+        ChasePlayer();
+    }
+
+    public override void ExitState(BaseState preState)
+    {
+        Debug.Log("Exit Chase State. " + preState.GetStateType());
+    }
+
+    public override void InputHandle()
+    {
+
+    }
+
+    private void ChasePlayer()
+    {
+        //_enemy.TargPlayer
+        Debug.Log("i'm chasing the player");
+    }
 }
