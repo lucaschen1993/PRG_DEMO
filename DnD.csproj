@@ -830,6 +830,7 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
     <Compile Include="Assets\Scripts\AIEnemy.cs" />
     <Compile Include="Assets\Scripts\AllCharacter.cs" />
+    <Compile Include="Assets\Scripts\ETCHolder.cs" />
     <Compile Include="Assets\Scripts\FSM\FiniteStateMachine.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\State\AIState\AIAttackState.cs" />

@@ -19,17 +19,6 @@ public class AllCharacter : MonoBehaviour
         STATE_ATTACK,
         STATE_DEAD,
     }
-
+    [HideInInspector]
     public StateType CharaterState;
-
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

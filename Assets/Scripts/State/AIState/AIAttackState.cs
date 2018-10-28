@@ -23,18 +23,25 @@ public class AIAttackState : BaseState
         {
             Debug.Log("Enter the AttackState");
         }
+        _enemy.Attack();
         //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()
     {
-        Debug.Log("i'm in the attack state");
         Debug.Log("hit the player");
-
+        bool canAttack = _enemy.CanAttack();
+        //攻击间隔
+        if (canAttack)
+        {
+            _enemy.Attack();
+        }
     }
 
     public override void ExitState(BaseState preState)
     {
+        _enemy.ExitAttack();
+        _enemy.ResetAttackCoolDown();
         Debug.Log("Exit Attack State. " + preState.GetStateType());
     }
 

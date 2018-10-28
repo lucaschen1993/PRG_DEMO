@@ -22,14 +22,16 @@ public class DeadState : BaseState
         }
         else
         {
-            Debug.Log("Enter the EnterState");
+            Debug.Log("Enter the DeadState");
         }
         //Debug.Log(_player.CurBaseState);
+        _player.DeadAnimation();
+        _player.SetType(AllCharacter.StateType.STATE_DEAD);
     }
 
     public override void UpdateState()
     {
-        Debug.Log("I'm Dead.");
+        //Debug.Log("I'm Dead.");
     }
 
     public override void ExitState(BaseState preState)

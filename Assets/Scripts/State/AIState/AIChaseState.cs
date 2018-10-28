@@ -24,18 +24,22 @@ public class AIChaseState : BaseState
         {
             Debug.Log("Enter the PatrolState");
         }
+        _enemy.ResetCountChasingTime();
         //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()
     {
         Debug.Log("i'm in the chase state");
-        ChasePlayer();
+        _enemy.ChasingTarget();
+
     }
 
     public override void ExitState(BaseState preState)
     {
         Debug.Log("Exit Chase State. " + preState.GetStateType());
+        _enemy.ResetCountChasingTime();
+        _enemy.ExitChase();
     }
 
     public override void InputHandle()
@@ -43,9 +47,4 @@ public class AIChaseState : BaseState
 
     }
 
-    private void ChasePlayer()
-    {
-        //_enemy.TargPlayer
-        Debug.Log("i'm chasing the player");
-    }
 }

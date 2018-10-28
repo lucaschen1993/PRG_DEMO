@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SkullWorriorAnmiator
+  m_Controller: {fileID: 9100000, guid: 4bb5507182dc9d74fba117ac76ebd2ae, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ae804085e32e00d498b608624b0db22e, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: ae804085e32e00d498b608624b0db22e, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 648bbf7e4436b4f488e79437c71fb073, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 648bbf7e4436b4f488e79437c71fb073, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a7b8b67419ab874bbc8dcd721f44f48, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 0a7b8b67419ab874bbc8dcd721f44f48, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 0dd127595fd004242bdea085537514e6, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 0dd127595fd004242bdea085537514e6, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 6a402632c1ff53d4bb5dda66cf070948, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 6a402632c1ff53d4bb5dda66cf070948, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: b9fbc93a9e876dd4ba0d8f88d4c96f7e, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: b9fbc93a9e876dd4ba0d8f88d4c96f7e, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 86c98c40d07350f4493ec61a6e13ae89, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 86c98c40d07350f4493ec61a6e13ae89, type: 3}

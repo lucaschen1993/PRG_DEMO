@@ -18,23 +18,24 @@ public class StandState : BaseState
     {
         if (preState != null)
         {
-            Debug.Log("Enter the StandState the preState is:" + preState.GetStateType());
+            //Debug.Log("Enter the StandState the preState is:" + preState.GetStateType());
         }
         else
         {
-            Debug.Log("Enter the StandState");
+            //Debug.Log("Enter the StandState");
         }
         //Debug.Log(_player.CurBaseState);
+        _player.SetType(AllCharacter.StateType.STATE_STAND);
     }
 
     public override void UpdateState()
     {
-        Debug.Log("I'm Standing.");
+        //Debug.Log("I'm Standing.");
     }
 
     public override void ExitState(BaseState preState)
     {
-        Debug.Log("I Exit the Stand State. ");
+        //Debug.Log("I Exit the Stand State. ");
     }
 
     public override void InputHandle()

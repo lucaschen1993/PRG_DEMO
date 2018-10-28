@@ -17,23 +17,28 @@ public class MoveState : BaseState
     {
         if (preState != null)
         {
-            Debug.Log("Enter the MoveState the preState is:" + preState.GetStateType());
+            //Debug.Log("Enter the MoveState the preState is:" + preState.GetStateType());
         }
         else
         {
-            Debug.Log("Enter the MoveState");
+            //Debug.Log("Enter the MoveState");
         }
+        _player.SetType(AllCharacter.StateType.STATE_MOVE);
         //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()
     {
-        Debug.Log("I'm Moving.");
+        Vector3 v3 = _player.GetJoystickAxis();
+        float moveFactor = Vector3.Magnitude(v3);
+        _player.SetMoveFactor(moveFactor);
+        //Debug.Log("I'm Moving.");
     }
 
     public override void ExitState(BaseState preState)
     {
-        Debug.Log("Exit Move State. " + preState.GetStateType());
+        _player.SetMoveFactor(0f);
+        //Debug.Log("Exit Move State. " + preState.GetStateType());
     }
 
     public override void InputHandle()

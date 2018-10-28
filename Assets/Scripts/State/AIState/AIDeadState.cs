@@ -24,12 +24,12 @@ public class AIDeadState : BaseState
             Debug.Log("Enter the DeadState");
         }
         //Debug.Log(_player.CurBaseState);
+        _enemy.DeadAnimation();
     }
 
     public override void UpdateState()
     {
         Debug.Log("i'm dead");
-
     }
 
     public override void ExitState(BaseState preState)

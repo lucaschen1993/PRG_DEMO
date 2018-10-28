@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Basic.Math;
 using UnityEngine;
 
 public class AttackState : BaseState
@@ -24,17 +25,28 @@ public class AttackState : BaseState
         {
             Debug.Log("Enter the AttackState");
         }
+        _player.SetType(AllCharacter.StateType.STATE_ATTACK);
+        _player.ResetAttackCoolDown();
+        _player.Attack();
         //Debug.Log(_player.CurBaseState);
     }
 
     public override void UpdateState()
     {
         //战斗状态不间断平A
-        Debug.Log("I'm in Battle Mode .");
+        //Debug.Log("I'm in Battle Mode .");
+        bool canAttack = _player.CanAttack();
+        //攻击间隔
+        if (canAttack)
+        {
+            _player.Attack();
+        }
     }
 
     public override void ExitState(BaseState preState)
     {
+        _player.StopAttack();
+        _player.ResetAttackCoolDown();
         Debug.Log("Exit Attack State. " + preState.GetStateType());
     }
 
